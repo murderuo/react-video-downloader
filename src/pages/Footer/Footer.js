@@ -14,6 +14,14 @@ function Footer() {
             <li>Linkssssss</li>
           </ul>
         </div>
+        <div className="external">
+          <ul>
+            <li>twitter</li>
+            <li>Facebook</li>
+            <li>Youtube</li>
+            <li>instagram</li>
+          </ul>
+        </div>
       </div>
     </>
   );
