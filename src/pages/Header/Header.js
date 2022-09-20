@@ -5,6 +5,7 @@ function Header() {
     <header className={HeaderStyles.header}>
       <nav className={HeaderStyles.navbar}>
         <div className={HeaderStyles.logo}></div>
+
         <div className={HeaderStyles.links}>
           <ul>
             <li>
