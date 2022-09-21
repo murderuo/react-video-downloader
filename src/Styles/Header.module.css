@@ -1,5 +1,5 @@
 .header {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -17,21 +17,20 @@
 
 .logo {
   display: flex;
-  flex-basis: 30%;
-  align-content: center;
+  /* flex-basis: 25%; */
+  flex-basis: 227px;
+  
   flex-shrink: 0;
 }
 
 .logo img {
   max-width: 100%;
-  /* height: 20px; */
-  align-items: center;
-  /* height: 100%; */
 }
 
 .links {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   padding: 10px;
   flex-basis: 70%;
@@ -39,14 +38,12 @@
 }
 .links ul {
   display: flex;
-  /* width: 100%; */
   justify-content: center;
-  /* flex-shrink: 1; */
   list-style: none;
   flex-wrap: wrap;
   gap: 40px;
   padding: 10px;
-  font-size: 20px;
+  font-size: 18px;
   /* border: 1px solid; */
 }
 .links ul a {
