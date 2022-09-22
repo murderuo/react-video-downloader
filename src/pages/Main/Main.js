@@ -1,7 +1,7 @@
 import MainStyle from '../../Styles/Main.module.css';
 import { useState } from 'react';
 import axios from 'axios';
-const TOKEN = process.env.REACT_APP_BEARER_TOKEN;
+
 
 function Main() {
   const [inputValue, setInputValue] = useState('');
@@ -20,14 +20,13 @@ function Main() {
   };
 
   const getVideoUrl = async inputValue => {
-    const _token = TOKEN;
     const tweetInfo = await urlCheck(inputValue);
-    const header = { Authorization: _token };
-    const requestUrl = `https://api.twitter.com/1.1/statuses/show/${tweetInfo.tweetId}.json?&tweet_mode=extended`;
-    const response = await axios.get(requestUrl, { headers: header });
-    const videoUrl =
-      response.data.extended_entities.media[0].video_info.variants;
-    console.log(videoUrl);
+    const url=`${tweetInfo.tweetId}`
+    const response = await axios.get(url);
+    console.log(response.data);
+    // const videoUrl =
+    //   response.data.extended_entities.media[0].video_info.variants;
+    // console.log(videoUrl);
   };
 
   const urlCheck = input => {
