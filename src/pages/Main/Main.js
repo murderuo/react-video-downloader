@@ -1,11 +1,18 @@
 import MainStyle from '../../Styles/Main.module.css';
-import { useState } from 'react';
-import axios from 'axios';
+import { useState, useContext } from 'react';
 
+import axios from 'axios';
+import GlobalContext from '../Context/globalContext';
 
 function Main() {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(
+    'https://twitter.com/i/status/1574298110981021697',
+  );
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { videoInfo, setVideoInfo } = useContext(GlobalContext);
+
+  console.log(videoInfo);
 
   const handleInputChange = e => {
     // console.log(e.target.value);
@@ -20,19 +27,22 @@ function Main() {
   };
 
   const getVideoUrl = async inputValue => {
+    setLoading(true);
     const tweetInfo = await urlCheck(inputValue);
-    const url=`${tweetInfo.tweetId}`
+    const url = `${tweetInfo.tweetId}`;
     const response = await axios.get(url);
-    console.log(response.data);
-    // const videoUrl =
-    //   response.data.extended_entities.media[0].video_info.variants;
-    // console.log(videoUrl);
+    // console.log(response.data);
+    setVideoInfo({
+      ...videoInfo,
+      video_url: response.data.media_url,
+      latest_videos: response.data.latest_videos,
+    });
+    setLoading(false);
   };
 
-  const urlCheck = input => {
+  const urlCheck = () => {
     //https://twitter.com/i/status/1572542444176289794
     const tweetData = { user: '', tweetId: '' };
-
     const tweetUrl = inputValue.split('?', 1)[0];
     // console.log(tweetUrl);
     tweetData.user = tweetUrl.split('/')[3];
@@ -43,7 +53,7 @@ function Main() {
   return (
     <>
       <main className={MainStyle.main}>
-        <div className={MainStyle.container}>
+        <div className={loading ? MainStyle.loadblur : MainStyle.container}>
           <div className={MainStyle.inputdiv}>
             <h2>Bir video indirmek için sadece bağlantıyı girin!</h2>
             <input
@@ -60,8 +70,8 @@ function Main() {
           </div>
           <div className={MainStyle.content}>
             <h2>Medya dosyalarını indirmek için Şimdi indir' e tıklayın!</h2>
-            <button onClick={handleInputSubmit}>
-              Şimdi İndir
+            <button onClick={handleInputSubmit} disabled={loading}>
+              {loading ? 'İndiriliyor...' : 'Şimdi indir'}
               <i className="fa-regular fa-circle-down" />
             </button>
           </div>

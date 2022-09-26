@@ -1,13 +1,20 @@
+import { useContext } from 'react';
 import FooterStyle from '../../Styles/Footer.module.css';
+import GlobalContext from '../Context/globalContext';
 
 function Footer() {
+  const { videoInfo, setVideoInfo } = useContext(GlobalContext);
+
   return (
     <>
       <div className={FooterStyle.container}>
+        {videoInfo.video_url && (
+          <video src={videoInfo.video_url} controls></video>
+        )}
         <h1>Çevrimiçi video indir</h1>
         <h3>
-          Not: dosya indirme ve kaydetme ile ilgili ayrıntıları görmek ve bu kaynaktan dosya indirmek için web
-          kaynağının adını tıklayınız.
+          Not: dosya indirme ve kaydetme ile ilgili ayrıntıları görmek ve bu
+          kaynaktan dosya indirmek için web kaynağının adını tıklayınız.
         </h3>
         <div className={FooterStyle.external}>
           <ul>
@@ -34,16 +41,19 @@ function Footer() {
           </ul>
         </div>
 
-        <div className={FooterStyle.content}>
-          <h2>Son İndirilen videolar</h2>
-          <ul>
-            <li>Linkssssss</li>
-            <li>Linkssssss</li>
-            <li>Linkssssss</li>
-            <li>Linkssssss</li>
-            <li>Linkssssss</li>
-          </ul>
-        </div>
+        {videoInfo.latest_videos.length > 0 && (
+          <div className={FooterStyle.content}>
+            <h2>Son İndirilen videolar</h2>
+            <ul>
+              {videoInfo.latest_videos.map((video, index) => (
+                <li key={index}>
+                  {/* <a href={video}>{video}</a> */}
+                  <video src={video} controls></video>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </>
   );

@@ -1,5 +1,6 @@
-import HeaderStyles from "../../Styles/Header.module.css";
-import logo from "../../img/log.png";
+import HeaderStyles from '../../Styles/Header.module.css';
+import logo from '../../img/log.png';
+import React from 'react';
 
 function Header() {
   return (
@@ -12,13 +13,13 @@ function Header() {
         <div className={HeaderStyles.links}>
           <ul>
             <li>
-              <a href="#">Youtube</a>
+              <a href="#">Link 1</a>
             </li>
             <li>
-              <a href="#">İnstagram</a>
+              <a href="#">Link 2</a>
             </li>
             <li>
-              <a href="#">Facebook</a>
+              <a href="#">Link 3</a>
             </li>
           </ul>
         </div>
@@ -27,4 +28,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default React.memo(Header);

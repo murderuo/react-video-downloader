@@ -76,6 +76,19 @@
   padding: 10px;
   box-shadow: 5px 5px 5px #547a02;
 }
+.content button:disabled {
+  width: 60%;
+  height: 60px;
+  color: aliceblue;
+  font-size: 30px;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  /* width: 50%; */
+  background-color: #2f4400;
+  padding: 10px;
+  /* box-shadow: 5px 5px 5px #547a02; */
+}
 
 .content button:hover {
   box-shadow: none;
@@ -83,9 +96,14 @@
   cursor: pointer;
   margin-top: 5px;
 }
-.content button i {
-  margin-top: 5px;
-  margin-left: 10px;
+
+.loadblur {
+  max-width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  filter: blur(2px);
+  /* backdrop-filter: blur(8px); */
+  /* background: rgba(0, 0, 0, 0.8); */
 }
 
 @media (max-width: 450px) {
@@ -131,7 +149,6 @@
 
   .container {
     max-width: 100%;
-
   }
   .inputdiv {
     max-width: 100%;
@@ -159,9 +176,8 @@
   }
 }
 
-@media (max-width:1200px){
-
-  .content >button {
+@media (max-width: 1200px) {
+  .content > button {
     font-size: 25px;
   }
 }
