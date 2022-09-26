@@ -28,22 +28,31 @@ function Main() {
     setLoading(true);
     const tweetInfo = await urlCheck();
     const url = `https://twitter-downloader-backend.herokuapp.com/${tweetInfo.tweetId}`;
-    // const url = `${tweetInfo.tweetId}`;
-    const config = {
-      method: "get",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*",
-        "Access-Control-Allow-Credentials": "true",
-      },
-    };
+    const response=await fetch(url)
+    const data=await response.json()
 
-    const response = await axios.get(url,config);
-    console.log(response.data);
+    // const url = `${tweetInfo.tweetId}`;
+    // const config = {
+    //   method: "get",
+    //   headers: {
+    //     "Access-Control-Allow-Origin": "*",
+    //     "Access-Control-Allow-Headers": "*",
+    //     "Access-Control-Allow-Credentials": "true",
+    //   },
+    // };
+
+    // const response = await axios.get(url,config);
+    console.log(data);
+    // setVideoInfo({
+    //   ...videoInfo,
+    //   video_url: response.data.media_url,
+    //   latest_videos: response.data.latest_videos,
+    // });
+    
     setVideoInfo({
       ...videoInfo,
-      video_url: response.data.media_url,
-      latest_videos: response.data.latest_videos,
+      video_url: data.media_url,
+      latest_videos: data.latest_videos,
     });
     setLoading(false);
   };
