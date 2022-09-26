@@ -31,7 +31,6 @@ function Main() {
     // const url = `${tweetInfo.tweetId}`;
     const config = {
       method: "get",
-      url: url,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "*",
@@ -39,7 +38,7 @@ function Main() {
       },
     };
 
-    const response = await axios.get(config);
+    const response = await axios.get(url,config);
     console.log(response.data);
     setVideoInfo({
       ...videoInfo,
