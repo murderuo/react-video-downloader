@@ -7,19 +7,19 @@ function Header() {
     <header className={HeaderStyles.header}>
       <nav className={HeaderStyles.navbar}>
         <div className={HeaderStyles.logo}>
-          <img src={logo} />
+          <img src={logo} alt="logo" />
         </div>
 
         <div className={HeaderStyles.links}>
           <ul>
             <li>
-              <a href="#">Link 1</a>
+              <a href="#top">Link 1</a>
             </li>
             <li>
-              <a href="#">Link 2</a>
+              <a href="#top">Link 2</a>
             </li>
             <li>
-              <a href="#">Link 3</a>
+              <a href="#top">Link 3</a>
             </li>
           </ul>
         </div>

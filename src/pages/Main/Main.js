@@ -5,9 +5,7 @@ import axios from 'axios';
 import GlobalContext from '../Context/globalContext';
 
 function Main() {
-  const [inputValue, setInputValue] = useState(
-    'https://twitter.com/i/status/1574298110981021697',
-  );
+  const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { videoInfo, setVideoInfo } = useContext(GlobalContext);

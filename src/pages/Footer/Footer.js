@@ -3,7 +3,7 @@ import FooterStyle from '../../Styles/Footer.module.css';
 import GlobalContext from '../Context/globalContext';
 
 function Footer() {
-  const { videoInfo, setVideoInfo } = useContext(GlobalContext);
+  const { videoInfo } = useContext(GlobalContext);
 
   return (
     <>
@@ -19,22 +19,22 @@ function Footer() {
         <div className={FooterStyle.external}>
           <ul>
             <li>
-              <a href="#" className={FooterStyle.twitter}>
+              <a href="#top" className={FooterStyle.twitter}>
                 Twitter
               </a>
             </li>
             <li>
-              <a href="#" className={FooterStyle.facebook}>
+              <a href="#top" className={FooterStyle.facebook}>
                 Facebook
               </a>
             </li>
             <li>
-              <a href="#" className={FooterStyle.instagram}>
+              <a href="#top" className={FooterStyle.instagram}>
                 instagram
               </a>
             </li>
             <li>
-              <a href="#" className={FooterStyle.youtube}>
+              <a href="#top" className={FooterStyle.youtube}>
                 Youtube
               </a>
             </li>
