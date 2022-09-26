@@ -1,7 +1,7 @@
 import MainStyle from "../../Styles/Main.module.css";
 import { useState, useContext } from "react";
 
-// import axios from "axios";
+import axios from "axios";
 import GlobalContext from "../Context/globalContext";
 
 function Main() {
@@ -27,32 +27,25 @@ function Main() {
   const getVideoUrl = async () => {
     setLoading(true);
     const tweetInfo = await urlCheck();
-    const url = `https://twitter-downloader-backend.herokuapp.com/${tweetInfo.tweetId}`;
-    const response=await fetch(url)
-    const data=await response.json()
 
-    // const url = `${tweetInfo.tweetId}`;
-    // const config = {
-    //   method: "get",
-    //   headers: {
-    //     "Access-Control-Allow-Origin": "*",
-    //     "Access-Control-Allow-Headers": "*",
-    //     "Access-Control-Allow-Credentials": "true",
-    //   },
-    // };
-
-    // const response = await axios.get(url,config);
-    console.log(data);
+    //with fetch
+    // const url = `https://twitter-downloader-backend.herokuapp.com/${tweetInfo.tweetId}`;
+    // const response=await fetch(url)
+    // const data=await response.json()
     // setVideoInfo({
     //   ...videoInfo,
-    //   video_url: response.data.media_url,
-    //   latest_videos: response.data.latest_videos,
+    //   video_url: data.media_url,
+    //   latest_videos: data.latest_videos,
     // });
-    
+
+    /// with axios
+    const url = `${tweetInfo.tweetId}`;
+    const response = await axios.get(url);
+    const result =await response.data;
     setVideoInfo({
       ...videoInfo,
-      video_url: data.media_url,
-      latest_videos: data.latest_videos,
+      video_url: result.media_url,
+      latest_videos: result.latest_videos,
     });
     setLoading(false);
   };
