@@ -27,7 +27,7 @@ function Main() {
   const getVideoUrl = async inputValue => {
     setLoading(true);
     const tweetInfo = await urlCheck(inputValue);
-    const url = `${tweetInfo.tweetId}`;
+    const url = `https://twitter-downloader-backend.herokuapp.com/${tweetInfo.tweetId}`;
     const response = await axios.get(url);
     // console.log(response.data);
     setVideoInfo({
