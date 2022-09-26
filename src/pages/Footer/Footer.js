@@ -45,7 +45,7 @@ function Footer() {
           <div className={FooterStyle.content}>
             <h2>Son İndirilen videolar</h2>
             <ul>
-              {videoInfo.latest_videos.map((video, index) => (
+              {videoInfo.latest_videos.reverse().map((video, index) => (
                 <li key={index}>
                   {/* <a href={video}>{video}</a> */}
                   <video src={video} controls></video>
