@@ -27,9 +27,19 @@ function Main() {
   const getVideoUrl = async () => {
     setLoading(true);
     const tweetInfo = await urlCheck();
-    // const url = `https://twitter-downloader-backend.herokuapp.com/${tweetInfo.tweetId}`;
-    const url = `${tweetInfo.tweetId}`;
-    const response = await axios.get(url);
+    const url = `https://twitter-downloader-backend.herokuapp.com/${tweetInfo.tweetId}`;
+    // const url = `${tweetInfo.tweetId}`;
+    const config = {
+      method: "get",
+      url: url,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    };
+
+    const response = await axios.get(config);
     console.log(response.data);
     setVideoInfo({
       ...videoInfo,
