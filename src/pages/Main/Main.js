@@ -10,8 +10,6 @@ function Main() {
   const [loading, setLoading] = useState(false);
   const { videoInfo, setVideoInfo } = useContext(GlobalContext);
 
-  console.log(videoInfo);
-
   const handleInputChange = (e) => {
     // console.log(e.target.value);
     setInputValue(e.target.value);
