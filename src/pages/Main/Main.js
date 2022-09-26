@@ -39,7 +39,7 @@ function Main() {
     // });
 
     /// with axios
-    const url = `${tweetInfo.tweetId}`;
+    const url = `https://twitter-downloader-backend.herokuapp.com/${tweetInfo.tweetId}`;
     const response = await axios.get(url);
     const result =await response.data;
     setVideoInfo({
