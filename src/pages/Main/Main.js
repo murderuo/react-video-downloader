@@ -1,35 +1,36 @@
-import MainStyle from '../../Styles/Main.module.css';
-import { useState, useContext } from 'react';
+import MainStyle from "../../Styles/Main.module.css";
+import { useState, useContext } from "react";
 
-import axios from 'axios';
-import GlobalContext from '../Context/globalContext';
+import axios from "axios";
+import GlobalContext from "../Context/globalContext";
 
 function Main() {
-  const [inputValue, setInputValue] = useState('');
-  const [error, setError] = useState('');
+  const [inputValue, setInputValue] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { videoInfo, setVideoInfo } = useContext(GlobalContext);
 
   console.log(videoInfo);
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     // console.log(e.target.value);
     setInputValue(e.target.value);
-    setError('');
+    setError("");
   };
 
   const handleInputSubmit = () => {
-    if (inputValue.includes('twitter.com')) return getVideoUrl(inputValue);
-    setError('Lütfen geçerli bir twitter linki giriniz.');
+    if (inputValue.includes("twitter.com")) return getVideoUrl(inputValue);
+    setError("Lütfen geçerli bir twitter linki giriniz.");
     // setUrl(inputValue);
   };
 
-  const getVideoUrl = async inputValue => {
+  const getVideoUrl = async () => {
     setLoading(true);
-    const tweetInfo = await urlCheck(inputValue);
-    const url = `https://twitter-downloader-backend.herokuapp.com/${tweetInfo.tweetId}`;
+    const tweetInfo = await urlCheck();
+    // const url = `https://twitter-downloader-backend.herokuapp.com/${tweetInfo.tweetId}`;
+    const url = `${tweetInfo.tweetId}`;
     const response = await axios.get(url);
-    // console.log(response.data);
+    console.log(response.data);
     setVideoInfo({
       ...videoInfo,
       video_url: response.data.media_url,
@@ -40,11 +41,11 @@ function Main() {
 
   const urlCheck = () => {
     //https://twitter.com/i/status/1572542444176289794
-    const tweetData = { user: '', tweetId: '' };
-    const tweetUrl = inputValue.split('?', 1)[0];
+    const tweetData = { user: "", tweetId: "" };
+    const tweetUrl = inputValue.split("?", 1)[0];
     // console.log(tweetUrl);
-    tweetData.user = tweetUrl.split('/')[3];
-    tweetData.tweetId = tweetUrl.split('/')[5];
+    tweetData.user = tweetUrl.split("/")[3];
+    tweetData.tweetId = tweetUrl.split("/")[5];
     return tweetData;
   };
 
@@ -69,7 +70,7 @@ function Main() {
           <div className={MainStyle.content}>
             <h2>Medya dosyalarını indirmek için Şimdi indir' e tıklayın!</h2>
             <button onClick={handleInputSubmit} disabled={loading}>
-              {loading ? 'İndiriliyor...' : 'Şimdi indir'}
+              {loading ? "İndiriliyor..." : "Şimdi indir"}
               <i className="fa-regular fa-circle-down" />
             </button>
           </div>
