@@ -1,7 +1,7 @@
 import MainStyle from "../../Styles/Main.module.css";
 import { useState, useContext } from "react";
 
-import axios from "axios";
+// import axios from "axios";
 import GlobalContext from "../Context/globalContext";
 
 function Main() {
